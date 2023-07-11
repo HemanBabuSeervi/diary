@@ -15,6 +15,8 @@ else
 fi
 mkdir -p "root/$year/$month"
 $EDITOR "root/$year/$month/$day.html"
+cp "root/$year/$month/$day.html" "root/$year/$month/$day.copy.html"
+tidy -indent --indent-spaces 4 --tidy-mark no -quiet --show-body-only yes "root/$year/$month/$day.copy.html" > "root/$year/$month/$day.html"
 
 ./crypt.sh encrypt
 cd -
