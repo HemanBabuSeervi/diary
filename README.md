@@ -3,9 +3,10 @@ An Encrypted Diary writer that writes entries based on the date provided (Today'
 
 
 ## Installation
-PreInstallation: The user should have his own gpg key to be used for diary. The program needs the GPG user ID to be provided during installation.
 run the `./install.sh` script provided
-If installation goes wrong (Most probably wrong GPG user ID provided). run `./uninstall.sh` to undo installation.
+
+PreInstallation: The user should have his own gpg key to be used for diary. The program needs the GPG user ID to be provided during installation.
+
 
 ## Usage
 ```
@@ -23,9 +24,12 @@ diary   write [ DD MM YYYY ]
     * `footer`  Opens markup file for how the diary pdf ends
     * `style`   Add your css styling here
     * `script`  Write your programmatic generation of diary content (JavaScript) here
-- `genLoop` Stands for "Diary Generation Loop". Generates diary every <seconds> seconds. [Use along `diary view` & `diary write [ DD MM YYYY]` for live diary writing i.e. diary is generated every <second> seconds. thus all changes saved in the editor will be loaded every <second> seconds (Hint: Multiple diary commands can be invoked in different terminal tabs/sessions at the same time) ]
+- `genLoop` Stands for "Diary Generation Loop". Generates diary every \<seconds\> seconds. [ Use along `diary view` & `diary write [ DD MM YYYY ]` for live diary writing i.e. diary is generated every \<second\> seconds. thus all changes saved in the editor will be loaded every \<second\> seconds (Hint: Multiple diary commands can be invoked in different terminal tabs/sessions at the same time) ]
 
 ## Dependencies
 - `gpg` for Encryption
 - `wkhtmltopdf` for html markup of diary
 - `tidy` for Auto-Formatting of HTML Markup
+
+## Uninstallation
+run the `./uninstall.sh` script provided
