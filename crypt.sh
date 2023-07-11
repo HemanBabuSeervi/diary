@@ -31,24 +31,24 @@ isEncryptSafe(){
 cd $SHARE
 if [[ "$1" = "encrypt" && $# -eq 1 ]]; then
     if ! isEncryptSafe; then
-        echo "Encryption not Safe. NOTE: decryptStackSize was=$(decryptStackSize) isnow=$(($(decryptStackSize)-1))"
+#        echo "Encryption not Safe. NOTE: decryptStackSize was=$(decryptStackSize) isnow=$(($(decryptStackSize)-1))"
         decDecryptStackSize
         exit
     fi
     decDecryptStackSize
     tar -cf data $confidential
     gpg -r heman --encrypt data
-    echo "EnCRYPTED!!!"
+#    echo "EnCRYPTED!!!"
     rm -rf data $confidential
 elif [[ "$1" = "decrypt" && $# -eq 1 ]]; then
     if ! isDecryptSafe; then
-        echo "Decryption not Safe. NOTE: decryptStackSize was=$(decryptStackSize) isnow=$(($(decryptStackSize)+1))"
+#        echo "Decryption not Safe. NOTE: decryptStackSize was=$(decryptStackSize) isnow=$(($(decryptStackSize)+1))"
         incDecryptStackSize
         exit
     fi
     incDecryptStackSize
     gpg --decrypt data.gpg > data
-    echo "DECRYPTED!!!"
+#    echo "DECRYPTED!!!"
     tar -xf data
     rm data data.gpg
 else
