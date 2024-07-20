@@ -12,11 +12,18 @@ footer="\
     </body> \
 </html>"
 
+abortMessage(){
+	echo -e "\033[0;31mPlease $1. Aborting Install\033[0m"
+	exit
+}
 if [[ -z $BROWSER ]]; then
-    echo 'Please initialize $BROWSER variable. Aborting Install'
+	abortMessage 'initialize $BROWSER variable'
 fi
 if [[ -z $EDITOR ]]; then
-    echo 'Please initialize $EDITOR variable. Aborting Install'
+	abortMessage 'initialize $EDITOR variable'
+fi
+if ! command -v wkhtmtopdf &> /dev/null; then
+	abortMessage 'install wkhtmltopdf'
 fi
 
 
