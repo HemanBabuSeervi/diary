@@ -37,7 +37,10 @@ if [[ "$1" = "encrypt" && $# -eq 1 ]]; then
     fi
     decDecryptStackSize
     tar -cf data $confidential
-    gpg -r heman --encrypt data
+	if [[ ! -e .user ]]; then
+		echo "Fatal : .user file not found. Manually insert gpguid in SHARE/.user file"
+	fi
+	gpg -r "$(cat .user)" --encrypt data
 #    echo "EnCRYPTED!!!"
     rm -rf data $confidential
 elif [[ "$1" = "decrypt" && $# -eq 1 ]]; then
