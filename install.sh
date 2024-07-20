@@ -22,7 +22,7 @@ fi
 if [[ -z $EDITOR ]]; then
 	abortMessage 'initialize $EDITOR variable'
 fi
-if ! command -v wkhtmtopdf &> /dev/null; then
+if ! command -v wkhtmltopdf &> /dev/null; then
 	abortMessage 'install wkhtmltopdf'
 fi
 
@@ -51,9 +51,11 @@ gpgError(){
     exit
 }
 gpg -r $gpguid --encrypt data || gpgError
+echo "$gpguid" > .user
 rm -rf data $confidential
 cd -
 
 
 cp diary.sh writeDiary.sh viewDiary.sh genDiary.sh crypt.sh $SHARE
+chmod +x $SHARE/*
 ln -s -T $SHARE/diary.sh $HOME/.local/bin/diary && echo -e "\n\t========Program Installation Complete========\n"
